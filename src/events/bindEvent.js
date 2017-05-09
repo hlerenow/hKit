@@ -1,10 +1,10 @@
-fn.bindEvent = (el, type, handler) => {
+fn.bindEvent = function(el, type, handler) {
 	if (el.attachEvent) {
-		fn.bindEvent = function(el, type, handler) {
+		this.bindEvent = function(el, type, handler) {
 			el.attachEvent("on" + type, handler);
 		}
 	} else {
-		fn.bindEvent = function(el, type, handler) {
+		this.bindEvent = function(el, type, handler) {
 			el.addEventListener(type, handler);
 		}
 	}

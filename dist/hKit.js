@@ -1,28 +1,24 @@
 (function() {
-"use strict";
-
-var hKit = function hKit() {
+var hKit = function(arg) {
 
 	if (!(this instanceof hKit)) {
-		return new hKit();
+		return new hKit(arg);
 	}
 };
 
-var fn = hKit.prototype;
-"use strict";
-
-fn.bindEvent = function (el, type, handler) {
+var fn=hKit.prototype;
+fn.bindEvent = function(el, type, handler) {
 	if (el.attachEvent) {
-		fn.bindEvent = function (el, type, handler) {
+		fn.bindEvent = function(el, type, handler) {
 			el.attachEvent("on" + type, handler);
-		};
+		}
 	} else {
-		fn.bindEvent = function (el, type, handler) {
+		fn.bindEvent = function(el, type, handler) {
 			el.addEventListener(type, handler);
-		};
+		}
 	}
 
-	undefined.bindEvent(el, type, handler);
+	this.bindEvent(el, type, handler);
 };
 
 	

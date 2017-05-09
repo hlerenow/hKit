@@ -3,18 +3,9 @@ var gulp = require('gulp'),
 	rename = require('gulp-rename'),
 	uglify = require('gulp-uglify');
 
-
-// Load plugins
-var $ = require('gulp-load-plugins')();
-
-/* es6 */
-gulp.task('es6', function() {
+gulp.task('concat2', function() {
 
 	return gulp.src("src/**/*.js")
-		.pipe($.plumber())
-		.pipe($.babel({
-			presets: ['es2015']
-		}))
 		.pipe(concat("hKit-body.js"))
 		.pipe(gulp.dest('dist'));
 });
@@ -32,7 +23,7 @@ gulp.task("concat",function(){
 	.pipe(gulp.dest("dist"));
 });
 
-gulp.task("bulid",['concat','uglify'],function(){
+gulp.task("bulid",['concat2','concat','uglify'],function(){
 	console.log("编译完成");
 });
 
