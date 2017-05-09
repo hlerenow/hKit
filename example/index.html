@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta charset="utf-8" />
+		<title>hKit.js--精简小巧的javascript哭库</title>
+	</head>
+	<body>
+		<div id="sd">
+			55555
+		</div>
+	</body>
+	<script type="text/javascript" src="../dist/hKit.min.js"></script>
+	<script type="text/javascript">
+		hKit().bindEvent(document.getElementById("sd"), "click", function() {
+			alert(this.innerHTML);
+		});
+	</script>
+</html>
