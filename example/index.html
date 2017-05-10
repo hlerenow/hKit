@@ -11,8 +11,8 @@
 	</body>
 	<script type="text/javascript" src="../dist/hKit.min.js"></script>
 	<script type="text/javascript">
-		hKit().bindEvent(document.getElementById("sd"), "click", function() {
+		hKit().bindEvent("click", function() {
 			alert(this.innerHTML);
-		});
+		},document.getElementById("sd"));
 	</script>
 </html>

@@ -3,19 +3,6 @@ var gulp = require('gulp'),
 	rename = require('gulp-rename'),
 	uglify = require('gulp-uglify');
 
-gulp.task('concat2', function() {
-
-	return gulp.src("src/**/*.js")
-		.pipe(concat("hKit-body.js"))
-		.pipe(gulp.dest('dist'));
-});
-
-gulp.task("uglify",function(){
-	return gulp.src("dist/hKit.js")
-		.pipe(uglify())
-		.pipe(rename("hKit.min.js"))
-		.pipe(gulp.dest("dist"));
-});
 
 gulp.task("concat",function(){
 	return gulp.src(["dist/head.js","dist/hKit-body.js","dist/footer.js"])
@@ -23,10 +10,25 @@ gulp.task("concat",function(){
 	.pipe(gulp.dest("dist"));
 });
 
-gulp.task("bulid",['concat2','concat','uglify'],function(){
+gulp.task('concat2', ['concat'],function() {
+
+	return gulp.src("src/**/*.js")
+		.pipe(concat("hKit-body.js"))
+		.pipe(gulp.dest('dist'));
+});
+
+gulp.task("uglify",['concat2',],function(){
+	return gulp.src("dist/hKit.js")
+		.pipe(uglify())
+		.pipe(rename("hKit.min.js"))
+		.pipe(gulp.dest("dist"));
+});
+
+
+gulp.task("bulid",['uglify'],function(){
 	console.log("编译完成");
 });
 
-gulp.task('watch', ['bulid'], function() {
+gulp.task('watch',["bulid"],function() {
 	gulp.watch(['src/**/*.js','dist/footer.js','dist/head.js'], ['bulid']);
 });
